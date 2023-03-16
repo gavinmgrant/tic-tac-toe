@@ -1,4 +1,17 @@
-const Cell = ({ id, cell, setCells, go, setGo, cells, winningMessage }) => {
+import { useState, useEffect } from "react";
+
+const Cell = ({
+  id,
+  cell,
+  setCells,
+  go,
+  setGo,
+  cells,
+  winningMessage,
+  winningCombo,
+}) => {
+  const [losing, setLosing] = useState("");
+
   const handleClick = (e) => {
     // if there is a winning message, the game is over
     if (winningMessage) return;
@@ -33,9 +46,18 @@ const Cell = ({ id, cell, setCells, go, setGo, cells, winningMessage }) => {
     setCells(nextCells);
   };
 
+  useEffect(() => {
+    if (winningCombo) {
+      if (!winningCombo.includes(id)) {
+        setLosing(" losing");
+      }
+    }
+    if (!winningCombo) setLosing("");
+  }, [id, winningCombo]);
+
   return (
     <div className="square" id={id} onClick={handleClick}>
-      <div className={cell}></div>
+      <div className={cell + losing}></div>
     </div>
   );
 };

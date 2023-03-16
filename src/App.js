@@ -7,6 +7,7 @@ const App = () => {
   const [cells, setCells] = useState(EMPTY);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState(null);
+  const [winningCombo, setWinningCombo] = useState(null);
 
   const message = "It is now " + go + "'s turn.";
 
@@ -22,19 +23,29 @@ const App = () => {
       [2, 4, 6],
     ];
 
-    winningCombos.forEach((array) => {
-      let circleWins = array.every((cell) => cells[cell] === "circle");
+    winningCombos.forEach((array, index) => {
+      let winningIndex;
+      let circleWins = array.every((cell) => {
+        if (cells[cell] === "circle") winningIndex = index;
+        return cells[cell] === "circle";
+      });
 
       if (circleWins) {
+        setWinningCombo(winningCombos[winningIndex]);
         setWinningMessage("Circle wins!");
         return;
       }
     });
 
-    winningCombos.forEach((array) => {
-      let crossWins = array.every((cell) => cells[cell] === "cross");
+    winningCombos.forEach((array, index) => {
+      let winningIndex;
+      let crossWins = array.every((cell) => {
+        if (cells[cell] === "cross") winningIndex = index;
+        return cells[cell] === "cross";
+      });
 
       if (crossWins) {
+        setWinningCombo(winningCombos[winningIndex]);
         setWinningMessage("Cross wins!");
         return;
       }
@@ -62,7 +73,8 @@ const App = () => {
   const startOver = () => {
     setCells(EMPTY);
     setGo("circle");
-    setWinningMessage("");
+    setWinningMessage(null);
+    setWinningCombo(null);
   };
 
   return (
@@ -78,6 +90,7 @@ const App = () => {
             setGo={setGo}
             cells={cells}
             winningMessage={winningMessage}
+            winningCombo={winningCombo}
           />
         ))}
       </div>

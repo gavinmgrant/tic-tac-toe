@@ -31,7 +31,7 @@
   height: 90px;
   width: 90px;
   border-radius: 50%;
-  border: 15px solid blue;
+  border: 24px solid blue;
   box-sizing: border-box;
 }
 
@@ -61,4 +61,8 @@
   height: 30%;
   margin-top: -15%;
   width: 100%;
+}
+
+.losing {
+  opacity: 0.25;
 }
