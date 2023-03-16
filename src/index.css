@@ -1,3 +1,7 @@
+html {
+  background: radial-gradient(#e66465, #9198e5);
+}
+
 .app {
   margin: 0;
   padding: 0;
@@ -6,81 +10,104 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: #222;
 }
 
 .gameboard {
-  width: 300px;
-  height: 300px;
+  width: 396px;
+  height: 396px;
   display: flex;
   flex-wrap: wrap;
-  border: solid 2px black;
+  position: absolute;
 }
 
 .square {
-  width: 100px;
-  height: 100px;
-  border: solid 2px black;
-  box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  border: solid 2px #333;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 2px;
+  margin: 2px;
+  scale: 1;
+  transition: 0.25s;
+}
+
+.square:hover {
+  scale: 1.05;
+}
+
+.square:active {
+  scale: 0.95;
+}
+
+.message {
+  position: relative;
+  top: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .circle {
-  height: 90px;
-  width: 90px;
-  border-radius: 50%;
-  border: 24px solid blue;
-  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 
 .cross {
-  width: 90px;
-  height: 90px;
-  position: relative;
-  transform: rotate(45deg);
-}
-
-.cross:before,
-.cross:after {
-  content: "";
-  position: absolute;
-  background-color: red;
-}
-
-.cross:before {
-  left: 50%;
-  width: 30%;
-  margin-left: -15%;
+  width: 100%;
   height: 100%;
 }
 
-.cross:after {
+.loader {
+  position: absolute;
   top: 50%;
-  height: 30%;
-  margin-top: -15%;
-  width: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .losing {
   opacity: 0.25;
 }
 
-.animatepop {
-  animation-duration: 0.2s;
-  animation-name: animate-pop;
-  animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+.piece {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-@keyframes animate-pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.75, 0.75);
-  }
+.button {
+  border: solid 2px #222;
+  border-radius: 50px;
+  color: #222;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  padding: 6px 12px;
+  background: none;
+  cursor: pointer;
+  scale: 1;
+  transition: 0.25s;
+}
 
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+.button:hover {
+  scale: 1.1;
+}
+
+.button:active {
+  scale: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
 }

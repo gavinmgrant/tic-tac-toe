@@ -82,10 +82,16 @@ const App = () => {
           />
         ))}
       </div>
-      <p>{winningMessage || message}</p>
-      <button onClick={startOver} disabled={!winningMessage}>
-        Start Over
-      </button>
+      <div className="message">
+        <p>{winningMessage || message}</p>
+        <button
+          className="button"
+          onClick={startOver}
+          disabled={!winningMessage}
+        >
+          Start Over
+        </button>
+      </div>
     </div>
   );
 };

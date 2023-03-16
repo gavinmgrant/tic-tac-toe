@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Piece from "./Piece";
 
 const Cell = ({
   id,
@@ -23,12 +24,12 @@ const Cell = ({
 
     if (!taken) {
       if (go === "circle") {
-        e.target.firstChild.classList.add("circle", "animatepop");
+        e.target.firstChild.classList.add("circle");
         handleCellChange("circle");
         setGo("cross");
       }
       if (go === "cross") {
-        e.target.firstChild.classList.add("cross", "animatepop");
+        e.target.firstChild.classList.add("cross");
         handleCellChange("cross");
         setGo("circle");
       }
@@ -39,7 +40,7 @@ const Cell = ({
     const nextCells = cells.map((cell, index) => {
       if (index === id) {
         // index of the array is the same id of the selected cell, update className
-        return className + " animatepop";
+        return className;
       } else {
         // else return the same cell in the previous array
         return cell;
@@ -74,7 +75,9 @@ const Cell = ({
 
   return (
     <div className="square" id={id} onClick={handleClick}>
-      <div className={cell + losing} onClick={() => null}></div>
+      <div className={cell + losing} onClick={() => null}>
+        <Piece type={cell} />
+      </div>
     </div>
   );
 };
