@@ -23,12 +23,12 @@ const Cell = ({
 
     if (!taken) {
       if (go === "circle") {
-        e.target.firstChild.classList.add("circle");
+        e.target.firstChild.classList.add("circle", "animatepop");
         handleCellChange("circle");
         setGo("cross");
       }
       if (go === "cross") {
-        e.target.firstChild.classList.add("cross");
+        e.target.firstChild.classList.add("cross", "animatepop");
         handleCellChange("cross");
         setGo("circle");
       }
@@ -39,7 +39,7 @@ const Cell = ({
     const nextCells = cells.map((cell, index) => {
       if (index === id) {
         // index of the array is the same id of the selected cell, update className
-        return className;
+        return className + " animatepop";
       } else {
         // else return the same cell in the previous array
         return cell;

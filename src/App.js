@@ -9,7 +9,7 @@ const App = () => {
   const [winningMessage, setWinningMessage] = useState(null);
   const [winningCombo, setWinningCombo] = useState(null);
 
-  const message = "It is now " + go + "'s turn.";
+  const message = "It's your turn " + go.toUpperCase() + ".";
 
   const checkScore = () => {
     const winningCombos = [
@@ -26,13 +26,13 @@ const App = () => {
     winningCombos.forEach((array, index) => {
       let winningIndex;
       let circleWins = array.every((cell) => {
-        if (cells[cell] === "circle") winningIndex = index;
-        return cells[cell] === "circle";
+        if (cells[cell].includes("circle")) winningIndex = index;
+        return cells[cell].includes("circle");
       });
 
       if (circleWins) {
         setWinningCombo(winningCombos[winningIndex]);
-        setWinningMessage("Circle wins!");
+        setWinningMessage("CIRCLE wins!");
         return;
       }
     });
@@ -40,13 +40,13 @@ const App = () => {
     winningCombos.forEach((array, index) => {
       let winningIndex;
       let crossWins = array.every((cell) => {
-        if (cells[cell] === "cross") winningIndex = index;
-        return cells[cell] === "cross";
+        if (cells[cell].includes("cross")) winningIndex = index;
+        return cells[cell].includes("cross");
       });
 
       if (crossWins) {
         setWinningCombo(winningCombos[winningIndex]);
-        setWinningMessage("Cross wins!");
+        setWinningMessage("CROSS wins!");
         return;
       }
     });
