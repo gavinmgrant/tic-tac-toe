@@ -9,16 +9,18 @@ const Cell = ({
   cells,
   winningMessage,
   winningCombo,
+  setWinningMessage,
 }) => {
   const [losing, setLosing] = useState("");
 
   const handleClick = (e) => {
     // if there is a winning message, the game is over
-    if (winningMessage) return;
+    if (winningMessage || !e.target.firstChild) return;
 
     const taken =
       e.target.firstChild.classList.contains("circle") ||
       e.target.firstChild.classList.contains("cross");
+
     if (!taken) {
       if (go === "circle") {
         e.target.firstChild.classList.add("circle");
@@ -55,9 +57,24 @@ const Cell = ({
     if (!winningCombo) setLosing("");
   }, [id, winningCombo]);
 
+  useEffect(() => {
+    if (!winningCombo) {
+      const areAllCellsFilled = (arr) => {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === "") {
+            return false;
+          }
+        }
+        return true;
+      };
+      const allCellsFilled = areAllCellsFilled(cells);
+      if (allCellsFilled) setWinningMessage("Tie game!");
+    }
+  }, [cells, setGo, setWinningMessage, winningCombo]);
+
   return (
     <div className="square" id={id} onClick={handleClick}>
-      <div className={cell + losing}></div>
+      <div className={cell + losing} onClick={() => null}></div>
     </div>
   );
 };
