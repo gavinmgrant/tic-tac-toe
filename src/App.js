@@ -69,7 +69,9 @@ const App = () => {
 
   return (
     <div className="app">
-      {winningMessage && <Confetti width={width} height={height} />}
+      {winningMessage && winningMessage.includes("wins") && (
+        <Confetti width={width} height={height} />
+      )}
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
