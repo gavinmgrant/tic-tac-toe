@@ -14,7 +14,6 @@
   display: flex;
   flex-wrap: wrap;
   border: solid 2px black;
-  padding: 4px;
 }
 
 .square {
@@ -25,6 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .circle {
