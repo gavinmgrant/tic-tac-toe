@@ -39,6 +39,19 @@ const App = () => {
         return;
       }
     });
+
+    const areAllCellsFilled = (arr) => {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "") {
+          return false;
+        }
+      }
+      return true;
+    };
+
+    if (areAllCellsFilled(cells)) {
+      setWinningMessage("Tie game!");
+    }
   };
 
   useEffect(() => {
@@ -69,7 +82,9 @@ const App = () => {
         ))}
       </div>
       <p>{winningMessage || message}</p>
-      {winningMessage && <button onClick={startOver}>Start Over</button>}
+      <button onClick={startOver} disabled={!winningMessage}>
+        Start Over
+      </button>
     </div>
   );
 };
