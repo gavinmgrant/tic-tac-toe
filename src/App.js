@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import Cell from "./components/Cell";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 const EMPTY = ["", "", "", "", "", "", "", "", ""];
 
 const App = () => {
+  const { width, height } = useWindowSize();
   const [cells, setCells] = useState(EMPTY);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState(null);
@@ -66,6 +69,7 @@ const App = () => {
 
   return (
     <div className="app">
+      {winningMessage && <Confetti width={width} height={height} />}
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
