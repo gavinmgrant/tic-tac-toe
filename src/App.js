@@ -72,6 +72,7 @@ const App = () => {
       {winningMessage && winningMessage.includes("wins") && (
         <Confetti width={width} height={height} />
       )}
+      <h1 className="title">3D Tic Tac Toe</h1>
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
@@ -89,7 +90,7 @@ const App = () => {
         ))}
       </div>
       <div className="message">
-        <p>{winningMessage || message}</p>
+        <p className="message-text">{winningMessage || message}</p>
         <button
           className="button"
           onClick={startOver}
