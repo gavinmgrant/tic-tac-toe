@@ -1,6 +1,6 @@
-# Tic Tac Toe
+# 3D Tic-Tac-Toe
 
-A tic tac toe game built with [React](https://react.dev/) and [Spline](https://docs.spline.design/) 3d models for pieces.
+A tic-tac-toe game built with [React](https://react.dev/) and [Spline](https://docs.spline.design/) 3d models for pieces.
 
 ![Game flow gif](./public/3dttt.gif)
 

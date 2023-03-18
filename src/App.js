@@ -72,7 +72,7 @@ const App = () => {
       {winningMessage && winningMessage.includes("wins") && (
         <Confetti width={width} height={height} />
       )}
-      <h1 className="title">3D Tic Tac Toe</h1>
+      <h1 className="title">3D Tic-Tac-Toe</h1>
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
